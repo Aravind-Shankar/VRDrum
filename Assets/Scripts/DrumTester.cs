@@ -17,7 +17,7 @@ public class DrumTester : MonoBehaviour {
 		while (true) {
 			yield return new WaitForSeconds (repeatTimeSeconds);
 			int partIndex = Random.Range (0, drumController.allActiveParts.Length);
-			int force = Random.Range (0, DrumController.MAX_FORCE);
+			int force = Random.Range (1, DrumController.MAX_FORCE + 1);
 			drumController.Hit (partIndex, force);
 			Debug.LogFormat ("Part index: {0}\tForce: {1}", partIndex, force);
 		}

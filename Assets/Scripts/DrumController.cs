@@ -20,7 +20,7 @@ public class DrumController : MonoBehaviour {
 	public void Hit(int partIndex, int force) {
 		if (
 			(partIndex >= 0 && partIndex < allActiveParts.Length) &&
-			(force >= 0 && force < MAX_FORCE)
+			(force > 0 && force <= MAX_FORCE)
 			)
 		{
 			DrumPart hitPart = allActiveParts [partIndex];
