@@ -8,7 +8,7 @@ public class BTLEReceiver : MonoBehaviour {
 
 	private DrumController drumController;
 
-	public string DeviceName = "RFduino";
+	public string DeviceName = "glove module";
 	public string ServiceUUID = "FFE0";
 	public string SubscribeCharacteristic = "FFE1";
 	//public string WriteCharacteristic = "2222";
@@ -99,8 +99,10 @@ public class BTLEReceiver : MonoBehaviour {
 
 						//if (!_rssiOnly)
 						//{
+						connectionStateText.text = "Callback 1 called; name = " + name;
 							if (name.Contains (DeviceName))
 							{
+								connectionStateText.text = "name contained. address = " + address;
 								BluetoothLEHardwareInterface.StopScan ();
 
 								// found a device with the name we want
@@ -113,6 +115,18 @@ public class BTLEReceiver : MonoBehaviour {
 					}, (address, name, rssi, bytes) => {
 
 						// use this one if the device responses with manufacturer specific data and the rssi
+
+						connectionStateText.text = "Callback 2 called; name = " + name;
+						if (name.Contains (DeviceName))
+						{
+							connectionStateText.text = "name contained. address = " + address;
+							BluetoothLEHardwareInterface.StopScan ();
+
+							// found a device with the name we want
+							// this example does not deal with finding more than one
+							_deviceAddress = address;
+							SetState (States.Connect, 0.5f);
+						}
 
 						/*if (name.Contains (DeviceName))
 						{
