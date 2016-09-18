@@ -187,7 +187,10 @@ public class BTLEReceiver : MonoBehaviour {
 
 				case States.Subscribe:
 					connectionStateText.text = "Subscribing to module";
-					BluetoothLEHardwareInterface.SubscribeCharacteristicWithDeviceAddress (_deviceAddress, ServiceUUID, SubscribeCharacteristic, null, (address, characteristicUUID, bytes) => {
+					BluetoothLEHardwareInterface.SubscribeCharacteristicWithDeviceAddress (_deviceAddress, ServiceUUID, SubscribeCharacteristic,
+						(deviceAddress, notification) => {
+							
+						}, (address, characteristicUUID, bytes) => {
 
 						// we don't have a great way to set the state other than waiting until we actually got
 						// some data back. For this demo with the rfduino that means pressing the button
