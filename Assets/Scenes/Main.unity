@@ -14275,7 +14275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionStateText: {fileID: 1109072249}
-  DeviceName: glove module
+  DeviceName: glovemodule
   ServiceUUID: FFE0
   SubscribeCharacteristic: FFE1
 --- !u!1 &667329351

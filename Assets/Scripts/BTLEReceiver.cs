@@ -8,7 +8,7 @@ public class BTLEReceiver : MonoBehaviour {
 
 	private DrumController drumController;
 
-	public string DeviceName = "glove module";
+	public string DeviceName = "glovemodule";
 	public string ServiceUUID = "FFE0";
 	public string SubscribeCharacteristic = "FFE1";
 	//public string WriteCharacteristic = "2222";
