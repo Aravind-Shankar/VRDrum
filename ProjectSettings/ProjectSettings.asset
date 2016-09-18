@@ -94,7 +94,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.example.VRDrum
+  bundleIdentifier: com.psgtech.VRDrum
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 1
@@ -180,31 +180,9 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: 7866f93b6b78942d9bcbd80ea70f77b1, type: 3}
       m_Width: 128
       m_Height: 128
-  - m_BuildTarget: Android
-    m_Icons:
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c94506069dd2c484780fb8bbe4a4eb17, type: 3}
-      m_Width: 144
-      m_Height: 144
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c815034ffc16f4a0e98e42b9304188bf, type: 3}
-      m_Width: 96
-      m_Height: 96
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: fdd4612c583e9480dac1f3782facd476, type: 3}
-      m_Width: 72
-      m_Height: 72
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e6d951d4c4e37458f970b728b0e40808, type: 3}
-      m_Width: 48
-      m_Height: 48
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 56c95f39c06654eae9f6f8c3c03943db, type: 3}
-      m_Width: 36
-      m_Height: 36
   - m_BuildTarget: iPhone
     m_Icons:
     - serializedVersion: 2
