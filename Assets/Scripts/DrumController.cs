@@ -13,6 +13,9 @@ public class DrumController : MonoBehaviour {
 			allActiveParts [i].hitLight = allActiveParts [i].part.GetComponent<Light> ();
 			allActiveParts [i].hitLight.enabled = false;
 
+			allActiveParts [i].coloringMaterial = allActiveParts [i].coloringPart.GetComponent<Renderer> ().material;
+			allActiveParts [i].defaultColor = allActiveParts [i].coloringMaterial.color;
+
 			allActiveParts [i].hitSoundSource = allActiveParts [i].part.GetComponent<AudioSource> ();
 		}
 	}
@@ -30,21 +33,24 @@ public class DrumController : MonoBehaviour {
 				);
 
 			if (hitPart.hitLight != null) {
-				StopCoroutine (DelayAndDisableLight(hitPart.hitLight));
+				StopCoroutine (DelayAndUndoHit(hitPart));
 				hitPart.hitLight.enabled = true;
-				StartCoroutine (DelayAndDisableLight(hitPart.hitLight));
+				hitPart.coloringMaterial.color = hitPart.hitLight.color;
+				StartCoroutine (DelayAndUndoHit(hitPart));
 			}
 		}
 	}
 
-	IEnumerator DelayAndDisableLight(Light light) {
+	IEnumerator DelayAndUndoHit(DrumPart part) {
 		yield return new WaitForSeconds (0.5f);
-		light.enabled = false;
+		part.hitLight.enabled = false;
+		part.coloringMaterial.color = part.defaultColor;
 	}
 
 	[System.Serializable]
 	public class DrumPart {
 		public GameObject part;
+		public GameObject coloringPart;
 		public AudioClip sound;
 		public float baseVolume = 1.0f;
 
@@ -52,5 +58,9 @@ public class DrumController : MonoBehaviour {
 		public Light hitLight;
 		[HideInInspector]
 		public AudioSource hitSoundSource;
+		[HideInInspector]
+		public Material coloringMaterial;
+		[HideInInspector]
+		public Color defaultColor;
 	}
 }

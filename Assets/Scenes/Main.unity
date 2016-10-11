@@ -2509,7 +2509,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
-  m_Color: {r: 0.99264705, g: 0, b: 0.88150275, a: 1}
+  m_Color: {r: 0.9378803, g: 0.99264705, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
@@ -3325,7 +3325,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
-  m_Color: {r: 0.930933, g: 0.9852941, b: 0, a: 1}
+  m_Color: {r: 0.9852941, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
@@ -3893,7 +3893,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 203234294}
   m_LocalRotation: {x: -0.102549314, y: -0.0060895192, z: -0.1010794, w: 0.98956025}
-  m_LocalPosition: {x: -0.7990183, y: 0.1243119, z: 0.2915096}
+  m_LocalPosition: {x: -0.403, y: 0.118, z: 0.2915096}
   m_LocalScale: {x: 0.065, y: 0.07, z: 0.065}
   m_LocalEulerAnglesHint: {x: -11.782001, y: 0.508, z: -11.717001}
   m_Children:
@@ -3910,7 +3910,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
-  m_Color: {r: 0.92358905, g: 0.97794116, b: 0, a: 1}
+  m_Color: {r: 0.97794116, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
@@ -13033,7 +13033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &613633359
 Transform:
   m_ObjectHideFlags: 0
@@ -13963,10 +13963,10 @@ Transform:
   m_PrefabParentObject: {fileID: 401124, guid: 85e9120a79b22634fa654bfc61eeb444, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 648779193}
-  m_LocalRotation: {x: -0.060721066, y: 0.084389634, z: 0.5380613, w: 0.8364696}
+  m_LocalRotation: {x: -0.1010861, y: -0.020314291, z: -0.5331755, w: 0.839698}
   m_LocalPosition: {x: 0.019783393, y: 0.027649326, z: -0.0007024555}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -11.036, y: 4.3050003, z: -65.244}
   m_Children: []
   m_Father: {fileID: 972458202}
   m_RootOrder: 2
@@ -14208,36 +14208,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeScaleMultiplier: 1
   allActiveParts:
-  - part: {fileID: 1369794044}
-    sound: {fileID: 8300000, guid: 380e2ba37703f08479dc1211bb35ec22, type: 3}
-    baseVolume: 5
-    hitLight: {fileID: 0}
-    hitSoundSource: {fileID: 0}
-  - part: {fileID: 951021527}
-    sound: {fileID: 8300000, guid: 4568aace66c7b21458a4311b9a75fda3, type: 3}
-    baseVolume: 5
-    hitLight: {fileID: 0}
-    hitSoundSource: {fileID: 0}
-  - part: {fileID: 126168334}
-    sound: {fileID: 8300000, guid: 5405b87181972904f9b232d136df6283, type: 3}
-    baseVolume: 5
-    hitLight: {fileID: 0}
-    hitSoundSource: {fileID: 0}
   - part: {fileID: 792988882}
+    coloringPart: {fileID: 31155010}
     sound: {fileID: 8300000, guid: 9c68dbbf2d1010746a17d37122cbb9b7, type: 3}
     baseVolume: 5
     hitLight: {fileID: 0}
     hitSoundSource: {fileID: 0}
+    coloringMaterial: {fileID: 0}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - part: {fileID: 126168334}
+    coloringPart: {fileID: 1241242698}
+    sound: {fileID: 8300000, guid: 5405b87181972904f9b232d136df6283, type: 3}
+    baseVolume: 5
+    hitLight: {fileID: 0}
+    hitSoundSource: {fileID: 0}
+    coloringMaterial: {fileID: 0}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - part: {fileID: 951021527}
+    coloringPart: {fileID: 1183830523}
+    sound: {fileID: 8300000, guid: 4568aace66c7b21458a4311b9a75fda3, type: 3}
+    baseVolume: 5
+    hitLight: {fileID: 0}
+    hitSoundSource: {fileID: 0}
+    coloringMaterial: {fileID: 0}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - part: {fileID: 1369794044}
+    coloringPart: {fileID: 1270118057}
+    sound: {fileID: 8300000, guid: 380e2ba37703f08479dc1211bb35ec22, type: 3}
+    baseVolume: 5
+    hitLight: {fileID: 0}
+    hitSoundSource: {fileID: 0}
+    coloringMaterial: {fileID: 0}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
   - part: {fileID: 203234294}
+    coloringPart: {fileID: 1084196726}
     sound: {fileID: 8300000, guid: 003dd74ad3a4af2429f2de8b6a40e895, type: 3}
     baseVolume: 1
     hitLight: {fileID: 0}
     hitSoundSource: {fileID: 0}
+    coloringMaterial: {fileID: 0}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
   - part: {fileID: 175044297}
+    coloringPart: {fileID: 922116950}
     sound: {fileID: 8300000, guid: b22e2575a030da444962bfaf0a8cf96f, type: 3}
     baseVolume: 1
     hitLight: {fileID: 0}
     hitSoundSource: {fileID: 0}
+    coloringMaterial: {fileID: 0}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &658306406
 Transform:
   m_ObjectHideFlags: 0
@@ -14257,7 +14275,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 658306404}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7f484e2e3e582f4f850ec2eaac8ebbb, type: 3}
   m_Name: 
@@ -14269,7 +14287,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 658306404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b654020c60b8d9642be438896bd4590e, type: 3}
   m_Name: 
@@ -14278,6 +14296,7 @@ MonoBehaviour:
   DeviceName: glovemodule
   ServiceUUID: FFE0
   SubscribeCharacteristic: FFE1
+  ConfigDescriptor: 2902
 --- !u!1 &667329351
 GameObject:
   m_ObjectHideFlags: 0
@@ -17298,7 +17317,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 792988882}
   m_LocalRotation: {x: -0.05099547, y: -0.0002552163, z: -0.0047503537, w: 0.99868757}
-  m_LocalPosition: {x: 0.2871947, y: 0.57210004, z: -0.41863284}
+  m_LocalPosition: {x: 0.22, y: 0.57210004, z: -0.41863284}
   m_LocalScale: {x: 0.90000015, y: 0.9, z: 0.9}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -21050,7 +21069,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
-  m_Color: {r: 0.89735115, g: 0.020923464, b: 0.9485294, a: 1}
+  m_Color: {r: 0.84369403, g: 0.88235295, b: 0.18166092, a: 1}
   m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
@@ -24093,7 +24112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011928072}
   m_LocalRotation: {x: 0, y: 7.401487e-17, z: -0, w: 1}
-  m_LocalPosition: {x: -0.043797303, y: 0.061447613, z: -0.00014602659}
+  m_LocalPosition: {x: 0.141, y: 0.054, z: -0.072}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -26606,8 +26625,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.0000076, y: 410}
-  m_SizeDelta: {x: 1002, y: 62}
+  m_AnchoredPosition: {x: -0.0022125244, y: 410}
+  m_SizeDelta: {x: 2003.6, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1109072249
 MonoBehaviour:
@@ -31328,7 +31347,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1369794044}
   m_LocalRotation: {x: -0.05099547, y: -0.0002552163, z: -0.0047503537, w: 0.99868757}
-  m_LocalPosition: {x: -0.2871947, y: 0.57210004, z: -0.41863284}
+  m_LocalPosition: {x: -0.22, y: 0.57210004, z: -0.41863284}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -31348,7 +31367,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 7
   m_Type: 2
-  m_Color: {r: 0, g: 0.9485294, b: 0.9092798, a: 1}
+  m_Color: {r: 0.05709342, g: 0.9705882, b: 0.44139117, a: 1}
   m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30

@@ -11,7 +11,9 @@ public class BTLEReceiver : MonoBehaviour {
 	public string DeviceName = "glovemodule";
 	public string ServiceUUID = "FFE0";
 	public string SubscribeCharacteristic = "FFE1";
-	//public string WriteCharacteristic = "2222";
+	public string ConfigDescriptor = "2902";
+
+	private byte[] ENABLE_NOTIFICATION_VALUE = null;
 
 	enum States
 	{
@@ -30,7 +32,7 @@ public class BTLEReceiver : MonoBehaviour {
 	private States _state = States.None;
 	private string _deviceAddress;
 	private bool _foundSubscribeID = false;
-	//private bool _foundWriteID = false;
+	private bool _foundWriteID = false;
 	private byte[] _dataBytes = null;
 	//private bool _rssiOnly = false;
 	//private int _rssi = 0;
@@ -45,6 +47,10 @@ public class BTLEReceiver : MonoBehaviour {
 		//_foundWriteID = false;
 		_dataBytes = null;
 		//_rssi = 0;
+
+		ENABLE_NOTIFICATION_VALUE = new byte[2];
+		ENABLE_NOTIFICATION_VALUE [0] = 0x01;
+		ENABLE_NOTIFICATION_VALUE [1] = 0x00;
 	}
 
 	void SetState (States newState, float timeout)
@@ -162,7 +168,7 @@ public class BTLEReceiver : MonoBehaviour {
 
 					// note that the first parameter is the address, not the name. I have not fixed this because
 					// of backwards compatiblity.
-					// also note that I am note using the first 2 callbacks. If you are not looking for specific characteristics you can use one of
+					// also note that I am not using the first 2 callbacks. If you are not looking for specific characteristics you can use one of
 					// the first 2, but keep in mind that the device will enumerate everything and so you will want to have a timeout
 					// large enough that it will be finished enumerating before you try to subscribe or do any other operations.
 					BluetoothLEHardwareInterface.ConnectToPeripheral (_deviceAddress, null, null, (address, serviceUUID, characteristicUUID) => {
@@ -176,7 +182,7 @@ public class BTLEReceiver : MonoBehaviour {
 							// set the state. make sure there is enough timeout that if the
 							// device is still enumerating other characteristics it finishes
 							// before we try to subscribe
-							if (_foundSubscribeID/* && _foundWriteID*/)
+							if (_foundSubscribeID /*&& _foundWriteID*/ )
 							{
 								_connected = true;
 								SetState (States.Subscribe, 2f);
@@ -188,17 +194,26 @@ public class BTLEReceiver : MonoBehaviour {
 				case States.Subscribe:
 					connectionStateText.text = "Subscribing to module";
 					BluetoothLEHardwareInterface.SubscribeCharacteristicWithDeviceAddress (_deviceAddress, ServiceUUID, SubscribeCharacteristic,
-						(deviceAddress, notification) => {
-							
+						(deviceAddress, characteristicUUID) => {
+							if (IsEqual(characteristicUUID, SubscribeCharacteristic)) {
+								connectionStateText.text = "notif with matching uuid";
+								BluetoothLEHardwareInterface.WriteCharacteristic(DeviceName, ServiceUUID, ConfigDescriptor,
+									ENABLE_NOTIFICATION_VALUE, ENABLE_NOTIFICATION_VALUE.Length, true, (message) => {
+										connectionStateText.text = "Write finished, message = " + message;
+									});
+								BluetoothLEHardwareInterface.ReadCharacteristic(DeviceName, ServiceUUID, characteristicUUID,
+									(cUUID, bytes) => {
+										_state = States.Receiving;
+
+										// we received some data from the device
+										_dataBytes = bytes;
+									});
+							}
 						}, (address, characteristicUUID, bytes) => {
+							_state = States.Receiving;
 
-						// we don't have a great way to set the state other than waiting until we actually got
-						// some data back. For this demo with the rfduino that means pressing the button
-						// on the rfduino at least once before the GUI will update.
-						_state = States.Receiving;
-
-						// we received some data from the device
-						_dataBytes = bytes;
+							// we received some data from the device
+							_dataBytes = bytes;
 					});
 					break;
 				

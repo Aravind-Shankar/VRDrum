@@ -109,14 +109,15 @@ public class BluetoothLEHardwareInterface
 
 	public static void Log (string message)
 	{
-		if (!Application.isEditor)
-		{
+		if (!Application.isEditor) {
 #if UNITY_IPHONE || UNITY_TVOS
 			_iOSBluetoothLELog (message);
 #elif UNITY_ANDROID
 			if (_android != null)
 				_android.Call ("androidBluetoothLog", message);
 #endif
+		} else {
+			Debug.Log (message);
 		}
 	}
 
