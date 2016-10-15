@@ -1,0 +1,53 @@
+The Documentation is available online, please visit http://yahyabadran.github.io
+--------------------------------
+For Any Suggestions, Bug reports, or just want to say hi, e-mail : techtweaking@gmail.com
+-------------------------------
+###################### Combining Multiple Plugins ######################
+
+To make this plugin work with other plugins, You need to have one Android folder that contains one AndroidManifest.xml in your project and every .jar file should be inside that Android folder.
+
+So that tricky part is to combine AndroidManifest.xml files into one, you just need to copy the following noted lines from our AndroidManifest.xml to the targeted(other plugin) AndroidManifest.xml :
+
+		 ######Copying Receiver ##############
+		 
+		 <activity android:name="com.unity3d.player.UnityPlayerActivity"
+                  android:label="@string/app_name">
+
+                  /* you need to add what is after "this line", to register all those receivers */
+
+			<receiver
+		        android:name="com.badran.bluetoothcontroller.BtInterface"
+		        android:enabled="true">
+			    <intent-filter>
+			    	<action android:name="android.bluetooth.device.action.BOND_STATE_CHANGED" />
+                		<action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+                		<action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+                		<action android:name="android.bluetooth.device.action.ACL_DISCONNECT_REQUESTED" />
+              			<action android:name="android.bluetooth.adapter.action.SCAN_MODE_CHANGED" />
+                		<action android:name="android.bluetooth.adapter.action.DISCOVERY_FINISHED" />
+               			<action android:name="android.bluetooth.device.action.FOUND" />
+         		    </intent-filter>
+			</receiver>
+			
+			 <receiver
+		        	android:name="com.badran.bluetoothcontroller.Bridge"
+		        	android:enabled="true">
+			    <intent-filter>
+			    	<action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+          		</intent-filter>
+			</receiver>
+
+           		/* what follows is from Unity, End Copying */
+
+		</activity>
+
+			####################### Adding Permissions #############
+			
+			</application>
+			/* you need to add what is after "this line", to add Permission needed for this Library */
+			    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+			    <uses-permission android:name="android.permission.BLUETOOTH" />
+			    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+			/* what follows is from Unity, End Copying */
+			</manifest>
+
