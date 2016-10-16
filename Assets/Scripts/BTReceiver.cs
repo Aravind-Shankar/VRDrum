@@ -11,14 +11,39 @@ public class BTReceiver : MonoBehaviour {
 	public int numberOfBytes = 2;
 
 	private DrumController drumController;
+	private bool isBTEnabled = false;
+	private bool deviceFound = false;
 
 	// Use this for initialization
 	void Start () {
 		drumController = GetComponent<DrumController> ();
 		connectionStateText.text = "Initializing...";
+		BluetoothAdapter.listenToBluetoothState ();
 
-		BluetoothDevice transmitter = new BluetoothDevice ();
-		transmitter.Name = DeviceName;
+		if (!BluetoothAdapter.isBluetoothEnabled()) {
+			connectionStateText.text = "BT disabled, asking...";
+			BluetoothAdapter.OnBluetoothON += ScanForDevice;
+			BluetoothAdapter.askEnableBluetooth ();
+		} else
+			ScanForDevice ();
+	}
+
+	public void ScanForDevice() {
+		if (!isBTEnabled) {
+			isBTEnabled = true;
+			connectionStateText.text = "BT enabled, scanning...";
+			BluetoothAdapter.OnDeviceDiscovered += (BluetoothDevice device, short rssi) => {
+				if (!deviceFound && device.Name.Equals (DeviceName)) {
+					deviceFound = true;
+					connectionStateText.text = "Device found: " + device.Name + " with rssi " + rssi;
+					ConnectToDevice (device);
+				}
+			};
+			BluetoothAdapter.startDiscovery ();
+		}
+	}
+
+	public void ConnectToDevice(BluetoothDevice transmitter) {
 		transmitter.ReadingCoroutine = readBytesAndHitDrum;
 		AddLoggingCallbacks (transmitter);
 		transmitter.connect ();
