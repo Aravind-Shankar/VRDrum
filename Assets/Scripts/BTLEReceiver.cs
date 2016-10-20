@@ -32,7 +32,7 @@ public class BTLEReceiver : MonoBehaviour {
 	private States _state = States.None;
 	private string _deviceAddress;
 	private bool _foundSubscribeID = false;
-	private bool _foundWriteID = false;
+	//private bool _foundWriteID = false;
 	private byte[] _dataBytes = null;
 	//private bool _rssiOnly = false;
 	//private int _rssi = 0;
