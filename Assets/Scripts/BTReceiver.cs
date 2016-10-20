@@ -16,7 +16,9 @@ public class BTReceiver : MonoBehaviour {
 	//private bool isBTEnabled = false;
 	//private bool deviceFound = false;
 
-	void Awake() {
+	void Start() {
+		drumController = GetComponent<DrumController> ();
+
 		transmitter = new BluetoothDevice ();
 
 		if (BluetoothAdapter.isBluetoothEnabled ()) {
@@ -29,10 +31,7 @@ public class BTReceiver : MonoBehaviour {
 
 			BluetoothAdapter.askEnableBluetooth ();
 		}
-	}
 
-	void Start() {
-		drumController = GetComponent<DrumController> ();
 		BluetoothAdapter.OnDeviceOFF += handleDeviceOFF;
 		BluetoothAdapter.OnDeviceNotFound += handleDeviceNotFound;
 	}
