@@ -14,6 +14,7 @@ public class NoteController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		source.Play ();
+
 	}
 	
 	// Update is called once per frame
