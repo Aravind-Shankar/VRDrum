@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Remote.unity
   - enabled: 0
     path: Assets/GoogleVR/DemoScenes/HeadsetDemo/DemoScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
   - enabled: 0
     path: Assets/Example/TestScene.unity
@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/Example/BluetoothLETest/BLETestScene.unity
   - enabled: 0
     path: Assets/BT_Library/Demos/Automatic Connection/AutomaticConnection.unity
+  - enabled: 1
+    path: Assets/Scenes/Siddu.unity

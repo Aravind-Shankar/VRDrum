@@ -56,7 +56,7 @@ public class BTReceiver : MonoBehaviour {
 				byte[] data = device.read ();
 
 				if (data != null && data.Length >= numberOfBytes) {
-					connectionStateText.text = data.Length + " bytes received: " + (int)(data [0]-48) + " and " + (int)(data [1]-48);
+					connectionStateText.text = data.Length + " bytes received: " + (int)(data [0]) + " and " + (int)(data [1]);
 					drumController.Hit ((int) (data[0]), (int) (data[1]));
 				}
 			}

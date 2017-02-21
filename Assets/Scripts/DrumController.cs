@@ -8,6 +8,8 @@ public class DrumController : MonoBehaviour {
 	public float volumeScaleMultiplier = 1.0f;
 	public DrumPart[] allActiveParts;
 
+	public NoteController noteController;
+
 	void Start() {
 		for (int i = 0; i < allActiveParts.Length; ++i) {
 			allActiveParts [i].hitLight = allActiveParts [i].part.GetComponent<Light> ();
@@ -21,15 +23,15 @@ public class DrumController : MonoBehaviour {
 	}
 
 	public void Hit(int partIndex, int force) {
-		if (
+		if (	
 			(partIndex >= 0 && partIndex < allActiveParts.Length) &&
-			(force > 0 && force <= MAX_FORCE)
+			(force >= 0 && force <= MAX_FORCE)
 			)
 		{
 			DrumPart hitPart = allActiveParts [partIndex];
 			if (hitPart.sound != null && hitPart.hitSoundSource != null)
 				hitPart.hitSoundSource.PlayOneShot (
-					hitPart.sound, hitPart.baseVolume * force * volumeScaleMultiplier
+					hitPart.sound, hitPart.baseVolume * (force > 0 ? force : 1) * volumeScaleMultiplier
 				);
 
 			if (hitPart.hitLight != null) {
@@ -38,6 +40,8 @@ public class DrumController : MonoBehaviour {
 				hitPart.coloringMaterial.color = hitPart.hitLight.color;
 				StartCoroutine (DelayAndUndoHit(hitPart));
 			}
+			if (noteController != null)
+				noteController.ProgressUpdate (partIndex);
 		}
 	}
 
