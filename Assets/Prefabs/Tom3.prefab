@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drumIndex: 3
+  nextNote: {fileID: 0}
+  highlightScale: {x: 2, y: 2, z: 1}
 --- !u!222 &222845975592570248
 CanvasRenderer:
   m_ObjectHideFlags: 1

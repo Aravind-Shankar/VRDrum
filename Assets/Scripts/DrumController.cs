@@ -7,18 +7,33 @@ public class DrumController : MonoBehaviour {
 
 	public float volumeScaleMultiplier = 1.0f;
 	public NoteController noteController;
+	public float hitUndoDelay = 0.5f;
+	public float highlightUndoDelay = 1.5f;
 
 	public DrumPart[] allActiveParts;
 
 	void Start() {
-		for (int i = 0; i < allActiveParts.Length; ++i) {
-			allActiveParts [i].hitLight = allActiveParts [i].part.GetComponent<Light> ();
-			allActiveParts [i].hitLight.enabled = false;
+		foreach (DrumPart activePart in allActiveParts) {
+			activePart.hitLight = activePart.part.GetComponent<Light> ();
+			activePart.defaultLightColor = activePart.hitLight.color;
+			activePart.hitLight.enabled = false;
 
-			allActiveParts [i].coloringMaterial = allActiveParts [i].coloringPart.GetComponent<Renderer> ().material;
-			allActiveParts [i].defaultColor = allActiveParts [i].coloringMaterial.color;
+			activePart.coloringMaterial = activePart.coloringPart.GetComponent<Renderer> ().material;
+			activePart.defaultMaterialColor = activePart.coloringMaterial.color;
 
-			allActiveParts [i].hitSoundSource = allActiveParts [i].part.GetComponent<AudioSource> ();
+			activePart.hitSoundSource = activePart.part.GetComponent<AudioSource> ();
+		}
+	}
+
+	public void Highlight(int partIndex) {
+		if (partIndex >= 0 && partIndex < allActiveParts.Length) {
+			DrumPart hitPart = allActiveParts [partIndex];
+			if (hitPart.hitLight != null) {
+				StopCoroutine (DelayAndUndoHit(hitPart, highlightUndoDelay, true));
+				hitPart.hitLight.enabled = true;
+				hitPart.coloringMaterial.color = hitPart.hitLight.color = noteController.highlightColor;
+				StartCoroutine (DelayAndUndoHit(hitPart, highlightUndoDelay, true));
+			}
 		}
 	}
 
@@ -35,20 +50,23 @@ public class DrumController : MonoBehaviour {
 				);
 
 			if (hitPart.hitLight != null) {
-				StopCoroutine (DelayAndUndoHit(hitPart));
+				StopCoroutine (DelayAndUndoHit(hitPart, hitUndoDelay, false));
 				hitPart.hitLight.enabled = true;
 				hitPart.coloringMaterial.color = hitPart.hitLight.color;
-				StartCoroutine (DelayAndUndoHit(hitPart));
+				StartCoroutine (DelayAndUndoHit(hitPart, hitUndoDelay, false));
 			}
 			if (noteController)
 				noteController.ProgressUpdate (partIndex);
 		}
 	}
 
-	IEnumerator DelayAndUndoHit(DrumPart part) {
-		yield return new WaitForSeconds (0.5f);
+	IEnumerator DelayAndUndoHit(DrumPart part, float delay, bool resetLightAlso) {
+		yield return new WaitForSeconds (delay);
 		part.hitLight.enabled = false;
-		part.coloringMaterial.color = part.defaultColor;
+		if (resetLightAlso) {
+			part.hitLight.color = part.defaultLightColor;
+		}
+		part.coloringMaterial.color = part.defaultMaterialColor;
 	}
 
 	[System.Serializable]
@@ -61,10 +79,12 @@ public class DrumController : MonoBehaviour {
 		[HideInInspector]
 		public Light hitLight;
 		[HideInInspector]
+		public Color defaultLightColor;
+		[HideInInspector]
 		public AudioSource hitSoundSource;
 		[HideInInspector]
 		public Material coloringMaterial;
 		[HideInInspector]
-		public Color defaultColor;
+		public Color defaultMaterialColor;
 	}
 }

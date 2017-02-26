@@ -41,6 +41,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drumIndex: 5
+  nextNote: {fileID: 0}
+  highlightScale: {x: 2, y: 2, z: 1}
 --- !u!114 &114618211638011594
 MonoBehaviour:
   m_ObjectHideFlags: 1

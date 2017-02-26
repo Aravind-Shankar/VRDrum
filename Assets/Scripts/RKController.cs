@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ProgressBar;
 
-public class RKController : MonoBehaviour {
-
-	public ProgressBarBehaviour progressBarBehaviour;
+public class RKController : NoteController {
 
 	public AudioSource source;
 
@@ -16,6 +14,16 @@ public class RKController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		progressBarBehaviour.SetFillerSizeAsPercentage (100 * source.timeSamples / source.clip.samples);
+		progressBar.SetFillerSizeAsPercentage (100 * source.timeSamples / source.clip.samples);
+	}
+
+	public override void ProgressUpdate (int drumIndex)
+	{
+		
+	}
+
+	protected override void UpdateUI ()
+	{
+		base.UpdateUI ();
 	}
 }
