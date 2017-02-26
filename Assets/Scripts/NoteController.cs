@@ -8,20 +8,20 @@ public class NoteController : MonoBehaviour {
     
 	public ProgressBarBehaviour progressBarBehaviour;
 
-	public AudioSource source;
-
-	private int totalSamples;
-
 	public CanvasGroup sheet1;
 	public CanvasGroup sheet2;
 
 	public DrumNote firstNote;
+
 	private DrumNote currentNote;
 
+	void Start () {
+		currentNote = firstNote;
+	}
 
 	public void ProgressUpdate(int drumIndex)
 	{
-		if (currentNote.drumIndex == drumIndex) {
+		if (currentNote && currentNote.drumIndex == drumIndex) {
 			if (s >= 100) {
 				sheet1.alpha = 0;
 				sheet2.alpha = 1;
@@ -35,25 +35,5 @@ public class NoteController : MonoBehaviour {
 
 
 	}
-
-	// Use this for initialization
-	void Start () {
-		//source.Play ();
-		currentNote = firstNote;
-	}
-
-	// Update is called once per frame
-	void Update () {
 		
-//			if (Input.GetKeyDown ("space")) 
-//			{
-//			
-//			progressBarBehaviour.SetFillerSizeAsPercentage (100 * source.timeSamples / source.clip.samples);
-//			progressBarBehaviour.SetFillerSizeAsPercentage (s);
-//			s = s + 6;
-//			}
-
-	}
-
-
 }

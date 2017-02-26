@@ -6,9 +6,9 @@ public class DrumController : MonoBehaviour {
 	public const int MAX_FORCE = 3;
 
 	public float volumeScaleMultiplier = 1.0f;
-	public DrumPart[] allActiveParts;
-
 	public NoteController noteController;
+
+	public DrumPart[] allActiveParts;
 
 	void Start() {
 		for (int i = 0; i < allActiveParts.Length; ++i) {
