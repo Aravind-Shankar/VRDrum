@@ -3,14 +3,26 @@ using System.Collections;
 
 public class DrumTester : MonoBehaviour {
 
+	public bool isRandomTest = true;
 	public float repeatTimeSeconds = 2.0f;
+	public KeyCode[] drumKeys;
 
 	private DrumController drumController;
 
 	// Use this for initialization
 	void Start () {
 		drumController = GetComponent<DrumController> ();
-		StartCoroutine (RandomHit ());
+
+		if (isRandomTest)
+			StartCoroutine (RandomHit ());
+	}
+
+	void Update() {
+		if (!isRandomTest) {
+			for (int i = 0; i < drumKeys.Length; ++i)
+				if (Input.GetKeyDown(drumKeys[i]))
+					drumController.Hit(i, 1);
+		}
 	}
 	
 	IEnumerator RandomHit() {

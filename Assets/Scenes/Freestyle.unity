@@ -19853,7 +19853,6 @@ GameObject:
   - component: {fileID: 658306406}
   - component: {fileID: 658306405}
   - component: {fileID: 658306407}
-  - component: {fileID: 658306408}
   - component: {fileID: 658306409}
   m_Layer: 0
   m_Name: DrumManager
@@ -19956,23 +19955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f484e2e3e582f4f850ec2eaac8ebbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRandomTest: 0
   repeatTimeSeconds: 1
---- !u!114 &658306408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 658306404}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b654020c60b8d9642be438896bd4590e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectionStateText: {fileID: 1109072249}
-  DeviceName: glovemodule
-  ServiceUUID: FFE0
-  SubscribeCharacteristic: FFE1
-  ConfigDescriptor: 2902
+  drumKeys: 30000000310000003200000033000000340000003500000036000000
 --- !u!114 &658306409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39132,7 +39117,7 @@ Transform:
   m_PrefabParentObject: {fileID: 401998, guid: 85e9120a79b22634fa654bfc61eeb444, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261757494}
-  m_LocalRotation: {x: -0.61237246, y: -0.35355338, z: -0.3535534, w: 0.6123724}
+  m_LocalRotation: {x: -0.6123725, y: -0.3535534, z: -0.35355344, w: 0.61237246}
   m_LocalPosition: {x: 0.18370698, y: -0.00000000494379, z: -0.10548888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
