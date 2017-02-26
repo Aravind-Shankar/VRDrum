@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b8072b2d398c93e43994d4751089d469
+timeCreated: 1488086776
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: AlphaMusicMan
+  fontNames:
+  - AlphaMusicMan
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
