@@ -16,7 +16,7 @@ public class DrumNote : MonoBehaviour {
 	private Vector3 initScale;
 	private Color initImageColor;
 
-	void Start() {
+	void Awake() {
 		rect = GetComponent<RectTransform> ();
 		initScale = rect.localScale;
 		noteImage = GetComponent<Image> ();

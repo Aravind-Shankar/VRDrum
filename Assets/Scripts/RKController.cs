@@ -10,6 +10,7 @@ public class RKController : NoteController {
 	// Use this for initialization
 	void Start () {
 		source.Play ();
+
 	}
 	
 	// Update is called once per frame
