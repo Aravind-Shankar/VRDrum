@@ -22,18 +22,22 @@ public class NoteController : MonoBehaviour {
 	public void ProgressUpdate(int drumIndex)
 	{
 		if (currentNote && currentNote.drumIndex == drumIndex) {
-			if (s >= 100) {
-				sheet1.alpha = 0;
-				sheet2.alpha = 1;
-				s = 15;
-			} else
+			if (s >= 100)
+				SwitchSheets ();
+			else
 				s = s + 6;
 
 			progressBarBehaviour.SetFillerSizeAsPercentage (s);
-			currentNote = firstNote.nextNote;
+			currentNote = currentNote.nextNote;
+			if (currentNote && currentNote.transform.parent != firstNote.transform.parent)
+				SwitchSheets ();
 		}
+	}
 
-
+	void SwitchSheets() {
+		sheet1.alpha = 0;
+		sheet2.alpha = 1;
+		s = 15;
 	}
 		
 }

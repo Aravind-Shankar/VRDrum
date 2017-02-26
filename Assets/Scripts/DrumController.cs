@@ -40,7 +40,7 @@ public class DrumController : MonoBehaviour {
 				hitPart.coloringMaterial.color = hitPart.hitLight.color;
 				StartCoroutine (DelayAndUndoHit(hitPart));
 			}
-			if (noteController != null)
+			if (noteController)
 				noteController.ProgressUpdate (partIndex);
 		}
 	}
