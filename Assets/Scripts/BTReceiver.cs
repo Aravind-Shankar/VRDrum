@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections;
 
 using TechTweaking.Bluetooth;
 
 public class BTReceiver : MonoBehaviour {
 
+	[System.Serializable]
+	public class ReadBytesEvent : UnityEvent<int, int> {}
+
+	[System.Serializable]
+	public class BTConnectedEvent : UnityEvent {}
+
 	public Text connectionStateText;
 	public string deviceName = "HC-05";
 	public string deviceMACAddress = "XX:XX:XX:XX:XX:XX";
 	public int numberOfBytes = 2;
+	public BTConnectedEvent OnBTModuleConnected;
+	public ReadBytesEvent OnReadBytes;
 
-	private DrumController drumController;
 	private BluetoothDevice transmitter;
 
 	void Start() {
-		drumController = GetComponent<DrumController> ();
-
 		transmitter = new BluetoothDevice ();
 
 		if (BluetoothAdapter.isBluetoothEnabled ()) {
@@ -50,21 +56,23 @@ public class BTReceiver : MonoBehaviour {
 
 	IEnumerator readFromTransmitter(BluetoothDevice device) {
 		connectionStateText.text = "Connected - reading possible.";
+		OnBTModuleConnected.Invoke();
 
 		while (device.IsReading) {
 			if (device.IsDataAvailable) {
 				byte[] data = device.read ();
 
 				if (data != null && data.Length >= numberOfBytes) {
-					connectionStateText.text = data.Length + " bytes received: " + (int)(data [0]) + " and " + (int)(data [1]);
-					drumController.Hit ((int) (data[0]), (int) (data[1]));
+					//connectionStateText.text = data.Length + " bytes received: " + (int)(data [0]) + " and " + (int)(data [1]);
+					connectionStateText.text = "Data is being received successfully.";
+					OnReadBytes.Invoke ((int) (data[0]), (int) (data[1]));
 				}
 			}
 
 			yield return null;
 		}
 
-		connectionStateText.text = "Reading done.";
+		//connectionStateText.text = "Reading done.";
 	}
 
 	void handleBTStateChange(bool btEnabled) {

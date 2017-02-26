@@ -21,3 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Siddu.unity
   - enabled: 1
     path: Assets/Scenes/Start.unity
+  - enabled: 1
+    path: Assets/Scenes/Freestyle.unity
+  - enabled: 1
+    path: Assets/Scenes/ReverseKaraoke.unity
