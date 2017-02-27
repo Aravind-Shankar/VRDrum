@@ -29,7 +29,7 @@ public class NoteController : MonoBehaviour {
 	protected int numNotesCorrect;
 
 	void Start () {
-		ComputeNotesAndSheets ();
+		ComputeParameters ();
 
 		numSheetsDone = numNotesPlayed = numNotesCorrect = 0;
 		currentNote = firstNote;
@@ -56,7 +56,7 @@ public class NoteController : MonoBehaviour {
 		}
 	}
 
-	void ComputeNotesAndSheets() {
+	protected virtual void ComputeParameters() {
 		totalNotes = totalSheets = 0;
 
 		currentNote = firstNote;
@@ -71,7 +71,7 @@ public class NoteController : MonoBehaviour {
 		}
 	}
 
-	void SwitchSheets() {
+	protected virtual void SwitchSheets() {
 		++numSheetsDone;
 		if (numSheetsDone < totalSheets) {
 			sheet1.alpha = 0;

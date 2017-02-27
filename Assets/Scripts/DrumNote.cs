@@ -8,6 +8,8 @@ public class DrumNote : MonoBehaviour {
 
 	public int drumIndex;
 	public DrumNote nextNote;
+	public int pauseTime;
+	public bool isStartOfLoop;
 	public Vector3 highlightScale;
 
 	private RectTransform rect;
