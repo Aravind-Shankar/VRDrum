@@ -9,13 +9,16 @@ public class RKController : NoteController {
 	public AudioSource source;
 	public float bpm;
 	public float initSheetTimeOffset;
+	public float beatEpsilonPercent;
 
 	private float fillerPercent;
 	private int totalBeats;
 	private float secondsPerBeat;
+	private float beatEpsilon;
 	private float sheetTimeOffset;
 	private int numBeatsDone;
 	private int deltaBeats;
+	private float beatDeltaTime;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +30,7 @@ public class RKController : NoteController {
 		source.Play ();
 		UpdateUI ();
 
-		// use InvokeRepeating() as Update() is too slow for normal BPMs (WWRY is 120bpm)
+		// use InvokeRepeating() as Update() is too slow for normal BPMs (WWRY is 164bpm)
 		InvokeRepeating ("BeatUpdate",
 			(initSheetTimeOffset > 0) ? initSheetTimeOffset : 0,
 			secondsPerBeat);
@@ -45,9 +48,11 @@ public class RKController : NoteController {
 		if (currentNote && numBeatsDone < totalBeats) {
 			++numBeatsDone;
 			++deltaBeats;
+			beatDeltaTime = -Time.realtimeSinceStartup;
 
 			if (currentNote.pauseTime == deltaBeats - 1) {
 				deltaBeats = 0;
+				currentNote.UndoHighlight ();
 				currentNote = currentNote.nextNote;
 				UpdateUI ();
 			}
@@ -57,7 +62,17 @@ public class RKController : NoteController {
 
 	public override void ProgressUpdate (int drumIndex)
 	{
-		
+		if (currentNote) {
+			++numNotesPlayed;
+			if (currentNote.drumIndex == drumIndex) {
+				beatDeltaTime += Time.realtimeSinceStartup;
+				if (beatDeltaTime <= beatEpsilon ||
+				    beatDeltaTime >= (secondsPerBeat - beatEpsilon)) {
+					++numNotesCorrect;
+				}
+			}
+			UpdateUI ();
+		}
 	}
 
 	protected override void ComputeParameters ()
@@ -65,6 +80,7 @@ public class RKController : NoteController {
 		totalSheets = totalNotes = 0;
 		totalBeats = (int) (source.clip.length * bpm / 60f);
 		secondsPerBeat = (float) (source.clip.length) / totalBeats;
+		beatEpsilon = secondsPerBeat * beatEpsilonPercent / 100;
 
 		currentNote = firstNote;
 		numBeatsDone = totalBeats;
@@ -104,6 +120,10 @@ public class RKController : NoteController {
 	{
 		//base.UpdateUI ();
 		correctNotesText.text = string.Format("Beats: {0}/{1}, notes: {2}/{3}",
-			numBeatsDone, totalBeats, numNotesCorrect, totalNotes);
+			numBeatsDone, totalBeats, numNotesCorrect, numNotesPlayed);
+		sheetText.text = string.Format ("Sheets {0}/{1}", numSheetsDone, totalSheets);
+		if (currentNote) {
+			currentNote.Highlight (highlightColor);
+		}
 	}
 }
