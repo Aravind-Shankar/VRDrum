@@ -20,23 +20,22 @@ public class RKController : NoteController {
 	private int deltaBeats;
 	private float beatDeltaTime;
 
-	// Use this for initialization
 	void Start () {
 		ComputeParameters ();
 
 		numBeatsDone = deltaBeats = numSheetsDone = numNotesCorrect = numNotesPlayed = 0;
 		sheetTimeOffset = initSheetTimeOffset;
+		currentNote = firstNote;
 
 		source.Play ();
 		UpdateUI ();
 
-		// use InvokeRepeating() as Update() is too slow for normal BPMs (WWRY is 164bpm)
+		// use InvokeRepeating() as Update() is too slow for normal BPMs (WWRY is 162bpm)
 		InvokeRepeating ("BeatUpdate",
 			(initSheetTimeOffset > 0) ? initSheetTimeOffset : 0,
 			secondsPerBeat);
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		fillerPercent = 100f * (source.time - sheetTimeOffset) * totalSheets / source.clip.length;
 		if (fillerPercent >= 100)
@@ -66,11 +65,19 @@ public class RKController : NoteController {
 			++numNotesPlayed;
 			if (currentNote.drumIndex == drumIndex) {
 				beatDeltaTime += Time.realtimeSinceStartup;
-				if (beatDeltaTime <= beatEpsilon ||
-				    beatDeltaTime >= (secondsPerBeat - beatEpsilon)) {
+				if (beatDeltaTime <= beatEpsilon) {
+					++numNotesCorrect;
+				}
+			} else if (currentNote.nextNote &&
+			         currentNote.nextNote.drumIndex == drumIndex) {
+				beatDeltaTime += Time.realtimeSinceStartup;
+				if (beatDeltaTime >= (secondsPerBeat - beatEpsilon)) {
 					++numNotesCorrect;
 				}
 			}
+			currentNote.UndoHighlight ();
+			deltaBeats -= (1 + currentNote.pauseTime);
+			currentNote = currentNote.nextNote;
 			UpdateUI ();
 		}
 	}
@@ -103,7 +110,7 @@ public class RKController : NoteController {
 		++numSheetsDone;
 		if (numSheetsDone < totalSheets) {
 			fillerPercent = 0;
-			sheetTimeOffset += source.time;
+			sheetTimeOffset = initSheetTimeOffset + source.time;
 			if (numSheetsDone == 1) {
 				sheet1.alpha = 0;
 				sheet2.alpha = 1;
@@ -118,7 +125,6 @@ public class RKController : NoteController {
 
 	protected override void UpdateUI ()
 	{
-		//base.UpdateUI ();
 		correctNotesText.text = string.Format("Beats: {0}/{1}, notes: {2}/{3}",
 			numBeatsDone, totalBeats, numNotesCorrect, numNotesPlayed);
 		sheetText.text = string.Format ("Sheets {0}/{1}", numSheetsDone, totalSheets);
