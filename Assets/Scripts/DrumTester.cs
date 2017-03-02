@@ -21,7 +21,7 @@ public class DrumTester : MonoBehaviour {
 		if (!isRandomTest) {
 			for (int i = 0; i < drumKeys.Length; ++i)
 				if (Input.GetKeyDown(drumKeys[i]))
-					drumController.Hit(i, 1);
+					drumController.Hit(i, 1, true);
 		}
 	}
 	
@@ -30,7 +30,7 @@ public class DrumTester : MonoBehaviour {
 			yield return new WaitForSeconds (repeatTimeSeconds);
 			int partIndex = Random.Range (0, drumController.allActiveParts.Length);
 			int force = Random.Range (1, DrumController.MAX_FORCE + 1);
-			drumController.Hit (partIndex, force);
+			drumController.Hit (partIndex, force, true);
 			Debug.LogFormat ("Part index: {0}\tForce: {1}", partIndex, force);
 		}
 	}

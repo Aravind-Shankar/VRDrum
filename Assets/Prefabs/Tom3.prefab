@@ -69,7 +69,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drumIndex: 3
   nextNote: {fileID: 0}
+  pauseTime: 0
+  isStartOfLoop: 0
   highlightScale: {x: 2, y: 2, z: 1}
+  autoDrumIndex: 0
 --- !u!222 &222845975592570248
 CanvasRenderer:
   m_ObjectHideFlags: 1

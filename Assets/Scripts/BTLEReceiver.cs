@@ -219,7 +219,7 @@ public class BTLEReceiver : MonoBehaviour {
 				
 				case States.Receiving:
 					connectionStateText.text = "Received bytes: " + _dataBytes[0] + "\t" + _dataBytes[1];
-					drumController.Hit ( (int)(_dataBytes[0]), (int)(_dataBytes[1]) );
+					drumController.Hit ( (int)(_dataBytes[0]), (int)(_dataBytes[1]), true );
 					break;
 
 				case States.Unsubscribe:

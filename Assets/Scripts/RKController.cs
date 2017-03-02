@@ -8,13 +8,14 @@ public class RKController : NoteController {
 
 	public AudioSource source;
 	public float bpm;
-	public float initSheetTimeOffset;
+	public float initSheetBeatOffset;
 	public float beatEpsilonPercent;
 
 	private float fillerPercent;
 	private int totalBeats;
 	private float secondsPerBeat;
 	private float beatEpsilon;
+	private float initSheetTimeOffset;
 	private float sheetTimeOffset;
 	private int numBeatsDone;
 	private int deltaBeats;
@@ -45,6 +46,9 @@ public class RKController : NoteController {
 
 	void BeatUpdate() {
 		if (currentNote && numBeatsDone < totalBeats) {
+			if (deltaBeats == 0)
+				drumController.Hit (currentNote.autoDrumIndex, 1, false);
+			
 			++numBeatsDone;
 			++deltaBeats;
 			beatDeltaTime = -Time.realtimeSinceStartup;
@@ -87,6 +91,7 @@ public class RKController : NoteController {
 		totalSheets = totalNotes = 0;
 		totalBeats = (int) (source.clip.length * bpm / 60f);
 		secondsPerBeat = (float) (source.clip.length) / totalBeats;
+		initSheetTimeOffset = initSheetBeatOffset * secondsPerBeat;
 		beatEpsilon = secondsPerBeat * beatEpsilonPercent / 100;
 
 		currentNote = firstNote;

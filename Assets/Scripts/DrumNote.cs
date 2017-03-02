@@ -11,6 +11,7 @@ public class DrumNote : MonoBehaviour {
 	public int pauseTime;
 	public bool isStartOfLoop;
 	public Vector3 highlightScale;
+	public int autoDrumIndex = -1;
 
 	private RectTransform rect;
 	private Image noteImage;

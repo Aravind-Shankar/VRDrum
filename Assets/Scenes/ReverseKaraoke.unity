@@ -129,8 +129,8 @@ MonoBehaviour:
   finishNotice: {fileID: 128951204}
   highlightColor: {r: 1, g: 0, b: 0.8896551, a: 1}
   source: {fileID: 4943136}
-  bpm: 162
-  initSheetTimeOffset: 0
+  bpm: 164
+  initSheetBeatOffset: 0.5
   beatEpsilonPercent: 50
 --- !u!82 &4943136
 AudioSource:

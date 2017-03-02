@@ -38,18 +38,22 @@ public class DrumController : MonoBehaviour {
 	}
 
 	public void Hit(int partIndex, int force) {
+		Hit (partIndex, force, true);
+	}
+
+	public void Hit(int partIndex, int force, bool highlight) {
 		if (	
 			(partIndex >= 0 && partIndex < allActiveParts.Length) &&
 			(force >= 0 && force <= MAX_FORCE)
 			)
 		{
 			DrumPart hitPart = allActiveParts [partIndex];
-			if (hitPart.sound != null && hitPart.hitSoundSource != null)
+			if (hitPart.sound && hitPart.hitSoundSource)
 				hitPart.hitSoundSource.PlayOneShot (
 					hitPart.sound, hitPart.baseVolume * (force > 0 ? force : 1) * volumeScaleMultiplier
 				);
 
-			if (hitPart.hitLight != null) {
+			if (highlight && hitPart.hitLight) {
 				StopCoroutine (DelayAndUndoHit(hitPart, hitUndoDelay, false));
 				hitPart.hitLight.enabled = true;
 				hitPart.coloringMaterial.color = hitPart.hitLight.color;
