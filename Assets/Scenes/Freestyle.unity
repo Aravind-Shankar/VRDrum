@@ -19884,7 +19884,7 @@ MonoBehaviour:
   - part: {fileID: 792988882}
     coloringPart: {fileID: 31155010}
     sound: {fileID: 8300000, guid: 9c68dbbf2d1010746a17d37122cbb9b7, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -19893,7 +19893,7 @@ MonoBehaviour:
   - part: {fileID: 126168334}
     coloringPart: {fileID: 1241242698}
     sound: {fileID: 8300000, guid: 5405b87181972904f9b232d136df6283, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -19902,7 +19902,7 @@ MonoBehaviour:
   - part: {fileID: 951021527}
     coloringPart: {fileID: 1183830523}
     sound: {fileID: 8300000, guid: 4568aace66c7b21458a4311b9a75fda3, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -19911,7 +19911,7 @@ MonoBehaviour:
   - part: {fileID: 1369794044}
     coloringPart: {fileID: 1270118057}
     sound: {fileID: 8300000, guid: 380e2ba37703f08479dc1211bb35ec22, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -19920,7 +19920,7 @@ MonoBehaviour:
   - part: {fileID: 203234294}
     coloringPart: {fileID: 1084196726}
     sound: {fileID: 8300000, guid: 003dd74ad3a4af2429f2de8b6a40e895, type: 3}
-    baseVolume: 1
+    baseVolume: 3
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -19929,7 +19929,7 @@ MonoBehaviour:
   - part: {fileID: 175044297}
     coloringPart: {fileID: 922116950}
     sound: {fileID: 8300000, guid: b22e2575a030da444962bfaf0a8cf96f, type: 3}
-    baseVolume: 1
+    baseVolume: 3
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -19938,7 +19938,7 @@ MonoBehaviour:
   - part: {fileID: 380161443}
     coloringPart: {fileID: 1023801200}
     sound: {fileID: 8300000, guid: b393c2d8df6e5af448ae729f2de5a8a8, type: 3}
-    baseVolume: 5
+    baseVolume: 20
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -39223,7 +39223,7 @@ Transform:
   m_PrefabParentObject: {fileID: 401998, guid: 85e9120a79b22634fa654bfc61eeb444, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261757494}
-  m_LocalRotation: {x: -0.61237246, y: -0.35355338, z: -0.3535534, w: 0.6123724}
+  m_LocalRotation: {x: -0.6123725, y: -0.3535534, z: -0.35355344, w: 0.61237246}
   m_LocalPosition: {x: 0.18370698, y: -0.00000000494379, z: -0.10548888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

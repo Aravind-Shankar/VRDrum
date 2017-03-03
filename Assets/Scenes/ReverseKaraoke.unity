@@ -25662,7 +25662,7 @@ MonoBehaviour:
   - part: {fileID: 698862724}
     coloringPart: {fileID: 726883070}
     sound: {fileID: 8300000, guid: 9c68dbbf2d1010746a17d37122cbb9b7, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -25671,7 +25671,7 @@ MonoBehaviour:
   - part: {fileID: 1927580899}
     coloringPart: {fileID: 1474919439}
     sound: {fileID: 8300000, guid: 5405b87181972904f9b232d136df6283, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -25680,7 +25680,7 @@ MonoBehaviour:
   - part: {fileID: 1011156364}
     coloringPart: {fileID: 2000385931}
     sound: {fileID: 8300000, guid: 4568aace66c7b21458a4311b9a75fda3, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -25689,7 +25689,7 @@ MonoBehaviour:
   - part: {fileID: 188351209}
     coloringPart: {fileID: 1080256682}
     sound: {fileID: 8300000, guid: 380e2ba37703f08479dc1211bb35ec22, type: 3}
-    baseVolume: 5
+    baseVolume: 7
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -25698,7 +25698,7 @@ MonoBehaviour:
   - part: {fileID: 470297992}
     coloringPart: {fileID: 436141416}
     sound: {fileID: 8300000, guid: 003dd74ad3a4af2429f2de8b6a40e895, type: 3}
-    baseVolume: 1
+    baseVolume: 3
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -25707,7 +25707,7 @@ MonoBehaviour:
   - part: {fileID: 1206671612}
     coloringPart: {fileID: 697820443}
     sound: {fileID: 8300000, guid: b22e2575a030da444962bfaf0a8cf96f, type: 3}
-    baseVolume: 1
+    baseVolume: 3
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -25716,7 +25716,7 @@ MonoBehaviour:
   - part: {fileID: 491029620}
     coloringPart: {fileID: 1764057487}
     sound: {fileID: 8300000, guid: b393c2d8df6e5af448ae729f2de5a8a8, type: 3}
-    baseVolume: 5
+    baseVolume: 20
     hitLight: {fileID: 0}
     defaultLightColor: {r: 0, g: 0, b: 0, a: 0}
     hitSoundSource: {fileID: 0}
@@ -43007,7 +43007,7 @@ Transform:
   m_PrefabParentObject: {fileID: 401998, guid: 85e9120a79b22634fa654bfc61eeb444, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1383654190}
-  m_LocalRotation: {x: -0.6123725, y: -0.3535534, z: -0.35355344, w: 0.61237246}
+  m_LocalRotation: {x: -0.61237246, y: -0.35355338, z: -0.3535534, w: 0.6123724}
   m_LocalPosition: {x: 0.18370698, y: -0.00000000494379, z: -0.10548888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
